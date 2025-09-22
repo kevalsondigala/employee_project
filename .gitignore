@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+
+# Virtual environments
+.env
+.venv
+venv/
+ENV/
+env/
+pip-wheel-metadata/
+
+# Django
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+local_settings.py
+
+# Migrations (optional: keep if versioning DB schema)
+*/migrations/__pycache__/
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# IDE / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker
+*.pid
+*.tar
+*.bak
+docker-compose.override.yml
+
+# Environment variables
+.env.example
+.env
+
+# System files
+.DS_Store
+Thumbs.db

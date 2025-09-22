@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Employee Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Employee Analytics</h1>
+  <canvas id="deptChart" width="600" height="300"></canvas>
+
+  <script>
+    async function fetchAnalytics(){
+      const res = await fetch('/api/analytics/', {credentials: 'same-origin'});
+      const data = await res.json();
+      return data;
+    }
+    (async ()=>{
+      const data = await fetchAnalytics();
+      const deptLabels = data.departments.map(d => d.name);
+      const deptCounts = data.departments.map(d => d.num_employees);
+      const ctx = document.getElementById('deptChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: deptLabels,
+          datasets: [{ label: 'Employees per Department', data: deptCounts }]
+        },
+        options: {}
+      });
+    })();
+  </script>
+</body>
+</html>
